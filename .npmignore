@@ -1,0 +1,16 @@
+node_modules/
+dist/
+src/
+scripts/
+specs/
+*.ts
+*.test.ts
+.env.test.example
+5487_process.log
+language.json
+package_name
+push_info.json
+tsconfig.json
+biome.json
+bun.lock
+meme.png
