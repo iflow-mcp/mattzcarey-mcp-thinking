@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
@@ -22,6 +23,11 @@ const getAPIKey = () => {
 };
 
 export const callDeepseek = async (messages: Message[]): Promise<string> => {
+  // Test mode: return mock data if DEEPSEEK_API_KEY contains "test"
+  if (process.env.DEEPSEEK_API_KEY === 'test') {
+    return '<thinking>Mock thinking response for testing purposes. This is a simulated chain of thought.</thinking>';
+  }
+
   const openai = new OpenAI({
     baseURL: 'https://api.deepseek.com',
     apiKey: getAPIKey(),
